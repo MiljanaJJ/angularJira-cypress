@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/MiljanaJJ/angularJira-cypress#readme",
   "devDependencies": {
-    "cypress": "^10.6.0"
+    "@shelex/cypress-allure-plugin": "^2.28.5",
+    "cypress": "^10.6.0",
+    "cypress-xpath": "^2.0.1"
   }
 }
