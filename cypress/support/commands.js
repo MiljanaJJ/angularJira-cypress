@@ -23,3 +23,50 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('createIssueCard', () => {
+
+
+    cy.get(':nth-child(3) > .itemIcon > .anticon > svg').click();
+
+
+
+    cy.get('issue-type-select > .ant-select > .ant-select-selector > .ant-select-selection-item > .flex').click();
+    cy.wait(2000);
+    cy.get('div[class="ant-select-item-option-content"]').each(function ($ele, index, list) {
+
+        if (($ele.text()) === 'Task') {
+
+            cy.wrap($ele).click();
+        }
+    });
+
+    cy.get('issue-priority-select > .ant-select > .ant-select-selector > .ant-select-selection-item > .flex').click();
+    cy.wait(2000);
+    cy.get('div[class="ant-select-item-option-content"]').each(function ($ele, index, list) {
+
+        if (($ele.text()) === 'Highest') {
+            cy.wrap($ele).click();
+        }
+    });
+
+    cy.get(':nth-child(3) > .form-input').focus().click().type("Test task");
+
+    cy.get('.ql-container').click()
+    cy.get('.ql-editor > p').type("Some description");
+
+    cy.get('issue-assignees-select > .ant-select > .ant-select-selector').as("assigneesField").scrollIntoView();
+    cy.get('@assigneesField').click();
+    cy.wait(2000);
+    cy.get('div[class="ant-select-item-option-content"]').each(function ($ele, index, list) {
+
+        if (index == 4) {
+            cy.wrap($ele).click();
+        }
+
+    });
+    cy.wait(2000);
+
+    cy.get('[classname="btn-primary mr-2"] > .btn').click();
+
+
+})
