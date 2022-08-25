@@ -3,3 +3,7 @@ describe('empty spec', () => {
     cy.visit('https://example.cypress.io')
   })
 })
+
+it('new change just to test CI', () => {
+  cy.visit('https://example.cypress.io')
+})
